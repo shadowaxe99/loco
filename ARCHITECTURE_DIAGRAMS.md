@@ -2,8 +2,6 @@
 
 Data flow diagrams provide a visual representation of how data flows through the application. They can be very helpful in understanding the overall system architecture.
 
-Unfortunately, as a text-based AI, I'm unable to create visual diagrams. However, I can describe what the data flow might look like in this application:
-
 1. **User Input**: The application starts by collecting user input through the command line. This includes details for a recurring event.
 
 2. **Google Calendar API**: The application interacts with the Google Calendar API to fetch upcoming events and create a new recurring event. The API returns data about the events.
