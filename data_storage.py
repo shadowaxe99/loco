@@ -28,16 +28,19 @@ CREATE TABLE IF NOT EXISTS schedules (
 );
 """
 
+
 def create_connection():
-    conn = None;
+    conn = None
     try:
-        conn = sqlite3.connect(':memory:') # creates a memory-based SQLite database
+        # creates a memory-based SQLite database
+        conn = sqlite3.connect(':memory:')
         print(sqlite3.version)
     except Error as e:
         print(e)
-    
+
     if conn:
         return conn
+
 
 def create_table(conn, create_table_sql):
     try:
@@ -45,6 +48,7 @@ def create_table(conn, create_table_sql):
         c.execute(create_table_sql)
     except Error as e:
         print(e)
+
 
 def store_data(user_preferences, user_schedule, user_appointments):
     conn = create_connection()
@@ -57,12 +61,18 @@ def store_data(user_preferences, user_schedule, user_appointments):
 
         # store user data
         cur = conn.cursor()
-        cur.execute("INSERT INTO users(preferences, schedule) VALUES(?,?)", (user_preferences, user_schedule))
+        cur.execute(
+            "INSERT INTO users(preferences, schedule) VALUES(?,?)",
+            (user_preferences,
+             user_schedule))
         user_id = cur.lastrowid
 
         # store appointments
         for appointment in user_appointments:
-            cur.execute("INSERT INTO appointments(user_id, appointment) VALUES(?,?)", (user_id, appointment))
+            cur.execute(
+                "INSERT INTO appointments(user_id, appointment) VALUES(?,?)",
+                (user_id,
+                 appointment))
 
         # commit the transactions
         conn.commit()

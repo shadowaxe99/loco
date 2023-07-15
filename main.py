@@ -11,6 +11,7 @@ import continuous_learning
 import privacy_security
 import utils
 
+
 def main():
     # Step 1: Understand Your Scheduling Needs
     user_input = ui_development.get_user_input()
@@ -20,10 +21,12 @@ def main():
     selected_features = feature_selection.select_features(parsed_input)
 
     # Step 3: Determine Integration Points
-    integration_points = integration_points.determine_integration_points(parsed_input)
+    integration_points = integration_points.determine_integration_points(
+        parsed_input)
 
     # Step 4: Define Personalization Options
-    personalization_options = personalization_options.define_personalization(parsed_input)
+    personalization_options = personalization_options.define_personalization(
+        parsed_input)
 
     # Step 5: Craft the Prompt
     ai_agent.craft_prompt()
@@ -35,7 +38,10 @@ def main():
     privacy_security.ensure_privacy()
 
     # Initialize AI Agent
-    agent = ai_agent.AIAgent(selected_features, integration_points, personalization_options)
+    agent = ai_agent.AIAgent(
+        selected_features,
+        integration_points,
+        personalization_options)
 
     # Sync with calendar
     calendar_data = calendar_integration.sync_calendar(agent)
@@ -48,6 +54,7 @@ def main():
 
     # Store data
     data_storage.store_data(user_schedule)
+
 
 if __name__ == "__main__":
     main()

@@ -3,6 +3,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.metrics import mean_absolute_error
 
+
 class MLModel:
     def __init__(self):
         self.model = RandomForestRegressor(random_state=1)
@@ -13,7 +14,8 @@ class MLModel:
         user_schedule_df = pd.DataFrame(user_schedule)
 
         # Combine the DataFrames
-        combined_df = pd.concat([user_preferences_df, user_schedule_df], axis=1)
+        combined_df = pd.concat(
+            [user_preferences_df, user_schedule_df], axis=1)
 
         # Split the data into training and validation data
         train_X, val_X, train_y, val_y = train_test_split(

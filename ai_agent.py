@@ -4,7 +4,8 @@ import json
 
 class AIAgent:
     def __init__(self):
-        self.messages = [{"role": "system", "content": "You are a helpful assistant."}]
+        self.messages = [{"role": "system",
+                          "content": "You are a helpful assistant."}]
 
     def add_user_message(self, content):
         self.messages.append({"role": "user", "content": content})
@@ -50,27 +51,29 @@ class AIAgent:
         )
         response_message = response['choices'][0]['message']
         self.messages.append(response_message)
-        
+
         # Check if the model called a function
         if 'function_call' in response_message:
             function_call = response_message['function_call']
-            
+
             # Get the arguments for the function
             arguments = json.loads(function_call['arguments'])
-            
+
             # Call the function with the arguments
             if function_call['name'] == 'schedule_calendar_time':
                 self.schedule_calendar_time(arguments['time'])
             elif function_call['name'] == 'send_email':
                 self.send_email(arguments['to'], arguments['body'])
-        
+
         return response_message['content']
 
     def clear_messages(self):
-        self.messages = [{"role": "system", "content": "You are a helpful assistant."}]
+        self.messages = [{"role": "system",
+                          "content": "You are a helpful assistant."}]
 
     def schedule_calendar_time(self, time):
-        # This is where you would add the code to schedule a time on the calendar
+        # This is where you would add the code to schedule a time on the
+        # calendar
         print('Scheduling time on calendar: {}'.format(time))
 
     def send_email(self, to, body):

@@ -17,6 +17,8 @@ SCOPES = ['https://www.googleapis.com/auth/calendar.readonly']
 # to perform tasks such as creating, updating, fetching events etc.
 # Therefore, successful creation of the service object confirms successful authentication and
 # a valid connection to the Google Calendar API.
+
+
 def authenticate():
     """Shows basic usage of the Google Calendar API.
     Prints the start and name of the next 10 events on the user's calendar.
@@ -54,13 +56,17 @@ def get_upcoming_events(service: object, num_events: int = 10):
     For example, get_upcoming_events(service, 5) would fetch the next 5 upcoming events.
     If no number is provided, the function defaults to fetching the next 10 upcoming events.
     """
+
     # Call the Calendar API
 try:
     now = datetime.datetime.utcnow().isoformat() + 'Z'  # 'Z' indicates UTC time
     print(f'Getting the upcoming {num_events} events')
-    events_result = service.events().list(calendarId='primary', timeMin=now,
-                                          maxResults=num_events, singleEvents=True,
-                                          orderBy='startTime').execute()
+    events_result = service.events().list(
+        calendarId='primary',
+        timeMin=now,
+        maxResults=num_events,
+        singleEvents=True,
+        orderBy='startTime').execute()
     events = events_result.get('items', [])
 
     if not events:
@@ -75,7 +81,13 @@ except HttpError as error:
     print('An error occurred: %s' % error)
 
 
-def add_event(service: object, start: str, end: str, summary: str, description: str, location: str) -> str:
+def add_event(
+        service: object,
+        start: str,
+        end: str,
+        summary: str,
+        description: str,
+        location: str) -> str:
     """
     Creates an event.
     :param service: The authenticated Google Calendar service object
@@ -100,7 +112,8 @@ def add_event(service: object, start: str, end: str, summary: str, description: 
         },
     }
     try:
-        created_event = service.events().insert(calendarId='primary', body=event).execute()
+        created_event = service.events().insert(
+            calendarId='primary', body=event).execute()
         print(f"Event created: {created_event['htmlLink']}")
         return created_event['htmlLink']
     except Exception as e:
@@ -123,6 +136,7 @@ def delete_event(service: object, event_id: str) -> bool:
         print(f"An error occurred: {e}")
         return False
 
+
 def update_event(service: object, event_id: str, updated_event: dict) -> str:
     """
     Updates an event.
@@ -132,7 +146,10 @@ def update_event(service: object, event_id: str, updated_event: dict) -> str:
     :return: The event's html link if the event is updated successfully
     """
     try:
-        updated_event = service.events().update(calendarId='primary', eventId=event_id, body=updated_event).execute()
+        updated_event = service.events().update(
+            calendarId='primary',
+            eventId=event_id,
+            body=updated_event).execute()
         print(f"Event updated: {updated_event['htmlLink']}")
         return updated_event['htmlLink']
     except Exception as e:
@@ -191,7 +208,6 @@ def get_settings(service: object) -> dict:
         return None
 
 
-
 def main():
     """Show basic usage of the Google Calendar API
     main() really for testing, but can show how these functions would
@@ -205,7 +221,13 @@ def main():
     # Create an event
     start_time = "2023-08-10T09:00:00-07:00"  # replace with real date and time
     end_time = "2023-08-10T10:00:00-07:00"  # replace with real date and time
-    add_event(service, start_time, end_time, 'Test Event', 'Test Description', 'Test Location')
+    add_event(
+        service,
+        start_time,
+        end_time,
+        'Test Event',
+        'Test Description',
+        'Test Location')
 
     # Delete an event
     event_id = "abcdefgh"  # replace with real event ID
@@ -228,9 +250,9 @@ def main():
     # Get settings
     get_settings(service)
 
+
 if __name__ == '__main__':
     main()
-
 
 
 if __name__ == '__main__':

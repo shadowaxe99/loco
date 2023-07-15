@@ -2,6 +2,7 @@ import tkinter as tk
 from tkinter import messagebox
 from src import ai_agent
 
+
 class UI:
     def __init__(self, root):
         self.root = root
@@ -17,7 +18,8 @@ class UI:
         self.preferences_form = tk.Entry(self.root)
         self.preferences_form.pack()
 
-        self.submit_button = tk.Button(self.root, text="Submit", command=self.submit)
+        self.submit_button = tk.Button(
+            self.root, text="Submit", command=self.submit)
         self.submit_button.pack()
 
     def submit(self):
@@ -37,6 +39,7 @@ class UI:
         self.schedule_view.config(text=schedule)
 
         messagebox.showinfo("Update", "Schedule updated successfully")
+
 
 if __name__ == "__main__":
     root = tk.Tk()
