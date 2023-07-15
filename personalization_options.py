@@ -58,8 +58,11 @@ def get_upcoming_events(service: object, num_events: int = 10):
     """
 
     # Call the Calendar API
+import datetime
+service = authenticate()
 try:
     now = datetime.datetime.utcnow().isoformat() + 'Z'  # 'Z' indicates UTC time
+    num_events = 10
     print(f'Getting the upcoming {num_events} events')
     events_result = service.events().list(
         calendarId='primary',

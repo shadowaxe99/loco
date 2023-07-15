@@ -1,13 +1,17 @@
 
-def get_event_details() -> tuple:
+def choose_calendar_service() -> str:
     """
-    Interacts with the user to collect the necessary details for the event.
-    :return: A tuple containing the event details (start time, end time, summary, description, location, recurrence rule)
+    Asks the user to choose between Google Calendar and Outlook Calendar.
+    :return: The user's choice ('Google' or 'Outlook')
     """
-    start_time = input('Enter the start time of the event in RFC3339 timestamp format: ')
-    end_time = input('Enter the end time of the event in RFC3339 timestamp format: ')
-    summary = input('Enter the summary or title of the event: ')
-    description = input('Enter the description of the event: ')
-    location = input('Enter the location of the event: ')
-    recurrence_rule = input('Enter the recurrence rule in RFC2445 iCalendar format: ')
-    return (start_time, end_time, summary, description, location, recurrence_rule)
+    print('Which calendar service would you like to use?')
+    print('1. Google Calendar')
+    print('2. Outlook Calendar')
+    choice = input('Enter the number of your choice: ')
+    if choice == '1':
+        return 'Google'
+    elif choice == '2':
+        return 'Outlook'
+    else:
+        print('Invalid choice. Please enter 1 for Google Calendar or 2 for Outlook Calendar.')
+        return choose_calendar_service()

@@ -10,6 +10,24 @@ This project is a Python application that interacts with the Google Calendar API
 
 4. **Set up Google Calendar API**: The application interacts with the Google Calendar API. You'll need to set up a project in the [Google Cloud Console](https://console.cloud.google.com/), enable the Google Calendar API, and obtain credentials (a client ID and client secret) that the application can use. You can find more information on how to do this in the [Google Calendar API Python Quickstart guide](https://developers.google.com/calendar/quickstart/python).
 
+   After obtaining the credentials, fill them in the `credentials.json` file in the following format:
+
+   ```json
+   {
+     "web": {
+       "client_id": "YOUR_CLIENT_ID",
+       "project_id": "YOUR_PROJECT_ID",
+       "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+       "token_uri": "https://oauth2.googleapis.com/token",
+       "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+       "client_secret": "YOUR_CLIENT_SECRET",
+       "redirect_uris": [
+         "YOUR_REDIRECT_URI"
+       ]
+     }
+   }
+   ```
+
 5. **Configure environment variables**: The application uses environment variables for configuration. You'll need to set these variables in your development environment. The required variables are:
 
     - `GOOGLE_CALENDAR_CLIENT_ID`: The client ID for the Google Calendar API.

@@ -43,6 +43,13 @@ def main():
         integration_points,
         personalization_options)
 
+    # Choose calendar service
+    calendar_service = ui_development.choose_calendar_service()
+    if calendar_service == 'Google':
+        calendar_integration = calendar_integration
+    elif calendar_service == 'Outlook':
+        calendar_integration = outlook_integration
+
     # Sync with calendar
     calendar_data = calendar_integration.sync_calendar(agent)
 
