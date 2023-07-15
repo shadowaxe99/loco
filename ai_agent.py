@@ -1,43 +1,78 @@
-import nlp_processing
-import ml_model
-import calendar_integration
-import data_storage
-import feature_selection
-import personalization_options
-import continuous_learning
-import privacy_security
+import openai
+import json
 
-class AIAgentScheduler:
+
+class AIAgent:
     def __init__(self):
-        self.user_preferences = {}
-        self.user_schedule = {}
-        self.user_appointments = []
-        self.calendar_data = {}
+        self.messages = [{"role": "system", "content": "You are a helpful assistant."}]
 
-    def parse_user_input(self, user_input):
-        return nlp_processing.parse_user_input(user_input)
+    def add_user_message(self, content):
+        self.messages.append({"role": "user", "content": content})
 
-    def generate_schedule(self):
-        return ml_model.generate_schedule(self.user_preferences, self.user_schedule, self.user_appointments)
+    def get_bot_response(self):
+        response = openai.ChatCompletion.create(
+            model="gpt-3.5-turbo",
+            messages=self.messages,
+            functions=[
+                {
+                    "name": "schedule_calendar_time",
+                    "description": "Schedule a time on the calendar",
+                    "parameters": {
+                        "type": "object",
+                        "properties": {
+                            "time": {
+                                "type": "string",
+                                "description": "The time to schedule on the calendar"
+                            }
+                        },
+                        "required": ["time"]
+                    }
+                },
+                {
+                    "name": "send_email",
+                    "description": "Send an email",
+                    "parameters": {
+                        "type": "object",
+                        "properties": {
+                            "to": {
+                                "type": "string",
+                                "description": "The email address to send to"
+                            },
+                            "body": {
+                                "type": "string",
+                                "description": "The body of the email"
+                            }
+                        },
+                        "required": ["to", "body"]
+                    }
+                }
+            ]
+        )
+        response_message = response['choices'][0]['message']
+        self.messages.append(response_message)
+        
+        # Check if the model called a function
+        if 'function_call' in response_message:
+            function_call = response_message['function_call']
+            
+            # Get the arguments for the function
+            arguments = json.loads(function_call['arguments'])
+            
+            # Call the function with the arguments
+            if function_call['name'] == 'schedule_calendar_time':
+                self.schedule_calendar_time(arguments['time'])
+            elif function_call['name'] == 'send_email':
+                self.send_email(arguments['to'], arguments['body'])
+        
+        return response_message['content']
 
-    def sync_calendar(self):
-        self.calendar_data = calendar_integration.sync_calendar(self.user_schedule, self.user_appointments)
-        return self.calendar_data
+    def clear_messages(self):
+        self.messages = [{"role": "system", "content": "You are a helpful assistant."}]
 
-    def update_UI(self):
-        ui_development.update_UI(self.user_schedule, self.user_appointments, self.user_preferences)
+    def schedule_calendar_time(self, time):
+        # This is where you would add the code to schedule a time on the calendar
+        print('Scheduling time on calendar: {}'.format(time))
 
-    def store_data(self):
-        data_storage.store_data(self.user_preferences, self.user_schedule, self.user_appointments)
-
-    def select_features(self, features):
-        self.user_preferences = feature_selection.select_features(features)
-
-    def define_personalization(self, personalization_level):
-        self.user_preferences = personalization_options.define_personalization(personalization_level)
-
-    def learn_and_improve(self):
-        self.user_preferences, self.user_schedule = continuous_learning.learn_and_improve(self.user_preferences, self.user_schedule, self.user_appointments)
-
-    def ensure_privacy(self):
-        privacy_security.ensure_privacy(self.user_preferences, self.user_schedule, self.user_appointments)
+    def send_email(self, to, body):
+        # This is where you would add the code to send an email
+        print('Sending email to {}: {}'.format(to, body))
