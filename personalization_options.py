@@ -65,12 +65,11 @@ try:
 
     if not events:
         print('No upcoming events found.')
-        return
-
-    # Prints the start and name of the upcoming events
-    for event in events:
-        start = event['start'].get('dateTime', event['start'].get('date'))
-        print(start, event['summary'])
+    else:
+        # Prints the start and name of the upcoming events
+        for event in events:
+            start = event['start'].get('dateTime', event['start'].get('date'))
+            print(start, event['summary'])
 
 except HttpError as error:
     print('An error occurred: %s' % error)

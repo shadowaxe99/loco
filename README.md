@@ -1,48 +1,51 @@
-# AI Agent Scheduler: The Superhero Edition
+# AI Assistant
 
-Welcome to the AI Agent Scheduler, the only scheduler that's more efficient than Batman with his gadgets, more powerful than Superman with his superpowers, more strategic than Donald Trump in a business deal, and more laid-back than Shaggy from Scooby-Doo. This isn't your average, run-of-the-mill scheduler. This is a superpowered, alien tech-infused, business-savvy, and chillaxed scheduler that's here to optimize your life.
+This is an AI assistant that can help with scheduling, personalization, and more.
 
-## What's Inside
+## Installation
 
-- **Natural Language Processing (NLP)**: This isn't just any NLP, it's like if Batman's Batcomputer could understand human languages. It's implemented in the `nlp_processing.py` file. The `NLPProcessor` class in this file is responsible for parsing user input. It tokenizes the input, removes stop words, and returns a list of words that the AI Agent Scheduler can understand.
-- **Machine Learning (ML)**: Our ML is so advanced, it could probably predict which villain Superman is going to fight next. You can find it doing its thing in the `ml_model.py` file. The `MLModel` class in this file is responsible for analyzing scheduling patterns, user preferences, and historical data to provide personalized scheduling recommendations.
-- **Calendar Integration APIs**: These APIs are so smooth, they could give Donald Trump a run for his money in a negotiation. Check them out in the `calendar_integration.py` file. The `CalendarIntegration` class in this file is responsible for integrating with popular calendar systems such as Google Calendar and Microsoft Outlook.
-- **User Interface (UI) Development**: Our UI is as easy to use as a Scooby snack and as stylish as Shaggy's green shirt. It's all in the `ui_development.py` file. The `UIDevelopment` class in this file is responsible for creating a user-friendly interface.
-- **Data Storage and Management**: We handle data like Batman handles his gadgets - with style and ease. See how in the `data_storage.py` file. The `DataStorage` class in this file is responsible for managing data storage using SQLite.
-
-## How to Install
-
-Installing our scheduler is easier than Superman lifting a car, Batman solving a riddle, Donald Trump closing a deal, or Shaggy eating a sandwich. Just run the following command:
+To install the necessary dependencies, run the following command:
 
 ```
 pip install -r requirements.txt
 ```
 
-## How to Use
+## Usage
 
-Using our scheduler is as simple as Superman flying, Batman disappearing, Donald Trump tweeting, or Shaggy saying 'Zoinks!'. Just navigate to the src directory and run the following command:
+To use the AI assistant, run the main.py script:
 
 ```
 python main.py
 ```
 
-## Future Work
+## Dependencies
 
-Just like how Batman is always upgrading his Batmobile, Superman is always saving the day, Donald Trump is always planning his next move, and Shaggy is always looking for his next meal, we're always improving. We're working on creating the following files:
+This project depends on the following Python libraries:
 
-- feature_selection.py
-- integration_points.py
-- personalization_options.py
-- continuous_learning.py
-- privacy_security.py
-- utils.py
+- google-auth
+- google-auth-httplib2
+- google-auth-oauthlib
+- google-api-python-client
+- nltk
+- openai
+- pandas
+- requests
+- scikit-learn
+- sklearn
+- tkinter
 
-And also the test files in the 'tests' directory.
+These can be installed using pip:
 
-## Deployment
+```
+pip install -r requirements.txt
+```
 
-Our application is currently designed to run locally, just like how Batman patrols Gotham, Superman watches over Metropolis, Donald Trump manages his empire, and Shaggy and Scooby solve mysteries in their hometown. But we're looking to expand and save the world, just like our heroes. Stay tuned for updates!
+## Contributing
 
-## The Superhero Touch
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
-Our AI Agent Scheduler is not just about efficiency, it's about personality. It's about having a scheduler that's as adaptable as Batman, as powerful as Superman, as strategic as Donald Trump, and as chill as Shaggy. So whether you're scheduling a meeting, planning a trip, or saving the world, our AI Agent Scheduler has got your back.
+Please make sure to update tests as appropriate.
+
+## License
+
+[MIT](https://choosealicense.com/licenses/mit/)
