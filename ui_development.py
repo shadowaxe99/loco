@@ -1,47 +1,13 @@
-import tkinter as tk
-from tkinter import messagebox
-from src import ai_agent
 
-
-class UI:
-    def __init__(self, root):
-        self.root = root
-        self.root.title("AI Agent Scheduler")
-        self.root.geometry("500x500")
-
-        self.schedule_view = tk.Label(self.root, text="Schedule View")
-        self.schedule_view.pack()
-
-        self.appointment_form = tk.Entry(self.root)
-        self.appointment_form.pack()
-
-        self.preferences_form = tk.Entry(self.root)
-        self.preferences_form.pack()
-
-        self.submit_button = tk.Button(
-            self.root, text="Submit", command=self.submit)
-        self.submit_button.pack()
-
-    def submit(self):
-        user_input = self.appointment_form.get()
-        preferences = self.preferences_form.get()
-
-        parsed_input = ai_agent.parse_user_input(user_input)
-        ai_agent.select_features(preferences)
-
-        ai_agent.generate_schedule(parsed_input)
-        ai_agent.sync_calendar()
-
-        self.update_UI()
-
-    def update_UI(self):
-        schedule = ai_agent.user_schedule
-        self.schedule_view.config(text=schedule)
-
-        messagebox.showinfo("Update", "Schedule updated successfully")
-
-
-if __name__ == "__main__":
-    root = tk.Tk()
-    ui = UI(root)
-    root.mainloop()
+def get_event_details() -> tuple:
+    """
+    Interacts with the user to collect the necessary details for the event.
+    :return: A tuple containing the event details (start time, end time, summary, description, location, recurrence rule)
+    """
+    start_time = input('Enter the start time of the event in RFC3339 timestamp format: ')
+    end_time = input('Enter the end time of the event in RFC3339 timestamp format: ')
+    summary = input('Enter the summary or title of the event: ')
+    description = input('Enter the description of the event: ')
+    location = input('Enter the location of the event: ')
+    recurrence_rule = input('Enter the recurrence rule in RFC2445 iCalendar format: ')
+    return (start_time, end_time, summary, description, location, recurrence_rule)

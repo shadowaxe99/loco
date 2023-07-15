@@ -1,6 +1,19 @@
-# AI Assistant
+# The Day Ben 10 Couldn't Handle Donna Paulsen's Sarcasm and Lewis Litt's Mudding Antics
 
-This is an AI assistant that can help with scheduling, personalization, and more.
+Welcome to the most exciting crossover event in the universe! Imagine if Ben 10, with his trusty Omnitrix, decided to take a break from fighting aliens and instead dived into the world of scheduling and personalization. And who better to guide him than the razor-sharp Donna Paulsen and the eccentric Lewis Litt from the legal drama Suits? That's exactly what this project is all about!
+
+In this Python application, we're combining the adventurous spirit of Ben 10, the wit of Donna Paulsen, and the uniqueness of Lewis Litt to create a Google Calendar event like no other. You'll be prompted to enter details for a recurring event, which will then be created on your Google Calendar. But this isn't just any event - it's an event that's been through the wringer of alien technology, legal acumen, and a whole lot of mud.
+
+So strap in, because we're about to embark on an intergalactic journey of scheduling and personalization. Here's everything you need to know:
+
+- [How to Set Up Your Omnitrix (aka Development Environment)](SETUP.md)
+- [How to Use Your New Alien Powers (aka Application Usage)](USAGE.md)
+- [Testing Your Powers (aka Testing)](TESTING.md)
+- [The Rules of the Omnitrix (aka Code Style Guidelines)](STYLE_GUIDE.md)
+- [Joining the Team (aka Contribution Guidelines)](CONTRIBUTING.md)
+- [When Things Go Wrong (aka Troubleshooting Guide)](TROUBLESHOOTING.md)
+- [Understanding Alien Technology (aka API Documentation)](API_DOCUMENTATION.md)
+- [The Blueprint of the Omnitrix (aka Data Flow Diagrams)](ARCHITECTURE_DIAGRAMS.md)
 
 ## Installation
 

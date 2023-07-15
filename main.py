@@ -56,5 +56,11 @@ def main():
     data_storage.store_data(user_schedule)
 
 
+    # Collect event details from user
+    event_details = ui_development.get_event_details()
+
+    # Create recurring event
+    calendar_integration.create_recurring_event(service, *event_details)
+
 if __name__ == "__main__":
     main()
